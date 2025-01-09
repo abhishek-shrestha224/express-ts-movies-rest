@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/controllers/movieController.ts","./src/schemas/movieSchema.ts","./src/services/movieService.ts"],"version":"5.7.2"}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Foo",
+    "durationInMinutes": 98,
+    "releasedYear": 2022
+  },
+  {
+    "id": 2,
+    "name": "Bar",
+    "durationInMinutes": 100,
+    "releasedYear": 1991
+  },
+  {
+    "id": 3,
+    "name": "Baz",
+    "durationInMinutes": 27,
+    "releasedYear": 1945
+  }
+]
