@@ -16,5 +16,11 @@
     "name": "Baz",
     "durationInMinutes": 27,
     "releasedYear": 1945
+  },
+  {
+    "id": 4,
+    "name": "New Name",
+    "durationInMinutes": 123,
+    "releasedYear": 123
   }
 ]

@@ -15,19 +15,21 @@ class MovieController {
         if (!movie) return res.status(404).send("Not Found :(");
         res.status(200).send(movie);
     }
-    // async createMovie(req: Request, res: Response) {
-    //     const { name, durationInMinutes, releasedYear } = req.body;
-    //     if (!name || !durationInMinutes || !releasedYear)
-    //         res.status(400).send("Bad Request! Missing some required data :(");
-    //     const movieData: MovieCreate = {
-    //         name: name,
-    //         durationInMinutes: durationInMinutes,
-    //         releasedYear: releasedYear,
-    //     };
-    //     const newMovie = await MovieService.createNewMovie(movieData);
-    //     if (!newMovie) res.status(500).send("Something Went Wrong:(");
-    //     res.status(201).send({ msg: "Created :)", data: newMovie });
-    // }
+    static async createMovie(req: Request, res: Response) {
+        const { name, durationInMinutes, releasedYear } = req.body;
+        if (!name || !durationInMinutes || !releasedYear)
+            return res
+                .status(400)
+                .send("Bad Request! Missing some required data :(");
+        const movieData: MovieCreate = {
+            name: name,
+            durationInMinutes: durationInMinutes,
+            releasedYear: releasedYear,
+        };
+        const newMovie = await MovieService.createNewMovie(movieData);
+        if (!newMovie) return res.status(500).send("Something Went Wrong:(");
+        res.status(201).send({ msg: "Created :)", data: newMovie });
+    }
 }
 
 export default MovieController;

@@ -6,7 +6,7 @@ const movieRouter = Router();
 
 movieRouter.get("/", MovieController.getAllMovies);
 movieRouter.get("/:id", MovieController.getMovieById);
-// movieRouter.post("/", MovieController.createMovie);
+movieRouter.post("/", MovieController.createMovie);
 // movieRouter.get("/", ProductController.getAll);
 // movieRouter.put("/:id", ProductController.replace);
 // movieRouter.patch("/:id", ProductController.update);
