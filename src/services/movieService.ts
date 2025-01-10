@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import { Movie, MovieCreate } from "../schemas/movieSchema.js";
 
 const movieService = {
-    async getAllMovies(): Promise<Movie[]> {
+    async getAllMovies(): Promise<Movie[] | undefined> {
         try {
             const movies: Movie[] = JSON.parse(
                 await fs.readFile("./src/db/movies.json", "utf8")
@@ -11,31 +11,23 @@ const movieService = {
             return movies;
         } catch (err) {
             console.error("Error reading movies data:", (err as Error).message);
-            throw new Error(
-                `Failed to fetch movies: ${(err as Error).message}`
-            );
+            return undefined;
         }
     },
 
-    async getMovieById(id: number): Promise<Movie> {
+    async getMovieById(id: number): Promise<Movie | undefined> {
         try {
             const movies: Movie[] = JSON.parse(
                 await fs.readFile("./src/db/movies.json", "utf8")
             );
             console.log(movies);
-            const result = movies.find((movie) => id === movie.id);
-            if (!result) {
-                throw new Error("Not Found :(");
-            }
-            return result;
+            return movies.find((movie) => id === movie.id);
         } catch (err) {
             console.error("Error reading movies data:", (err as Error).message);
-            throw new Error(
-                `Failed to fetch movies: ${(err as Error).message}`
-            );
+            return undefined;
         }
     },
-    async createNewMovie(createData: MovieCreate): Promise<Movie> {
+    async createNewMovie(createData: MovieCreate): Promise<Movie | undefined> {
         try {
             const movies: Movie[] = JSON.parse(
                 await fs.readFile("./src/db/movies.json", "utf8")
@@ -47,13 +39,10 @@ const movieService = {
                 ...createData,
             };
             movies.push(newMovie);
-
             return newMovie;
         } catch (err) {
             console.error("Error writing movies data", (err as Error).message);
-            throw new Error(
-                `Failed to fetch movies: ${(err as Error).message}`
-            );
+            return undefined;
         }
     },
 };
