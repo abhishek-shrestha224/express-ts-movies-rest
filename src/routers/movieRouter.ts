@@ -1,11 +1,12 @@
 import { Router } from "express";
-import movieController from "../controllers/movieController.js";
+
+import MovieController from "../controllers/movieController";
 
 const movieRouter = Router();
 
-movieRouter.get("/", movieController.getAllMovies);
-movieRouter.get("/:id", movieController.getMovieById);
-movieRouter.post("/", movieController.createMovie);
+movieRouter.get("/", MovieController.getAllMovies);
+movieRouter.get("/:id", MovieController.getMovieById);
+// movieRouter.post("/", MovieController.createMovie);
 // movieRouter.get("/", ProductController.getAll);
 // movieRouter.put("/:id", ProductController.replace);
 // movieRouter.patch("/:id", ProductController.update);
